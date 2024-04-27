@@ -1,4 +1,6 @@
-﻿using System;
+﻿using pract6Kalendar.Model;
+using pract6Kalendar.ViewModel.Helperi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,12 +26,20 @@ namespace pract6Kalendar
         {
             InitializeComponent();
             //обновление карточек после нажатия кнопок
+            Converter converter = new Converter();
+            var viborList = converter.Jsonviser<List<ViborNaDayModel>>("MyMood.json");
             wrapPanel.Children.Clear();
             for (int i = 1; i < DateTime.DaysInMonth(date.Year, date.Month); i++)
             {
                 carts carts = new carts();
                 carts.date.Text = i.ToString();
-
+                foreach (var item in viborList)
+                {
+                    if(item.data == DateTime.Now)
+                    {
+                        //carts.catrinka.Source = new BitmapImage(new Uri(item.));
+                    }
+                }
                 wrapPanel.Children.Add(carts);
             }
         }

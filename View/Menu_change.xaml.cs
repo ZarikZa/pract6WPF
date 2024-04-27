@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pract6Kalendar.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace pract6Kalendar
         public Menu_change()
         {
             InitializeComponent();
+            DataContext = new Menu_changeVM();
         }
     }
 }

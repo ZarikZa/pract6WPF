@@ -18,31 +18,26 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="79*"/>
-                <ColumnDefinition Width="124*"/>
-                <ColumnDefinition Width="297*"/>
-            </Grid.ColumnDefinitions>
-            <CheckBox Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18"/>
-            <CheckBox Grid.Column="0" Grid.Row="1" IsChecked="{Binding asdasd}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18"/>
-            <CheckBox Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18"/>
-            <CheckBox Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18"/>
-            <CheckBox Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18"/>
-            <CheckBox Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18"/>
-            <CheckBox Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18"/>
-            <TextBlock Grid.Column="2" Grid.Row="0" FontSize="20px" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Фаст-фуд" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="2" Grid.Row="1" FontSize="20px" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Овощи" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="2" Grid.Row="2" FontSize="20px" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Мясо" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="2" Grid.Row="3" FontSize="20px" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Рыба" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="2" Grid.Row="4" FontSize="20px" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Фрукты" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="2" Grid.Row="5" FontSize="20px" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Салат" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="2" Grid.Row="6" FontSize="20px" HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Молочка" VerticalAlignment="Center"/>
-            <Image  Source="/WIN_20230411_22_42_47_Pro.jpg" Grid.Row="0" Grid.Column="1" />
-            <Image Grid.Row="1" Grid.Column="1"  Source="/WIN_20230315_23_07_03_Pro.jpg"/>
-            <Image Grid.Row="2" Grid.Column="1" Source="/WIN_20230921_17_14_43_Pro.jpg" Stretch="Fill"/>
-            <Image Grid.Row="3" Grid.Column="1"  Source="/WIN_20230711_20_13_04_Pro.jpg" Stretch="Fill"/>
-            <Image Grid.Row="4" Grid.Column="1"  Source="/WIN_20230315_23_07_05_Pro.jpg" Stretch="Fill"/>
-            <Image Grid.Row="5" Grid.Column="1"  Source="/WIN_20230327_19_11_29_Pro.jpg" Stretch="Fill"/>
-        <Image Grid.Row="6" Grid.Column="1"  Source="/WIN_20230315_23_07_24_Pro.jpg" Stretch="Fill"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="79*"/>
+            <ColumnDefinition Width="124*"/>
+            <ColumnDefinition Width="297*"/>
+        </Grid.ColumnDefinitions>
+        <CheckBox CommandParameter="FastFood" Grid.Column="0" HorizontalAlignment="Left" IsChecked="{Binding CheckFastFood, Mode=TwoWay}" VerticalAlignment="Center" Height="18" Width="18" Command="{Binding Selected}"/>
+        <CheckBox CommandParameter="Ovoshi" Grid.Column="0" Grid.Row="1" IsChecked="{Binding CheckOvoshi, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18" Command="{Binding Selected}"/>
+        <CheckBox CommandParameter="Meet" Grid.Column="0" Grid.Row="2" IsChecked="{Binding CheckMeet, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18" Command="{Binding Selected}"/>
+        <CheckBox CommandParameter="Fish" Grid.Column="0" Grid.Row="3" IsChecked="{Binding CheckFish, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18" Command="{Binding Selected}"/>
+        <CheckBox CommandParameter="Fruit" Grid.Column="0" Grid.Row="4" IsChecked="{Binding CheckFruit, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18" Command="{Binding Selected}"/>
+        <TextBlock Grid.Column="2" Grid.Row="0" FontSize="20px" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding FastFoodtxt, Mode=TwoWay}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="2" Grid.Row="1" FontSize="20px" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Ovoshitxt, Mode=TwoWay}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="2" Grid.Row="2" FontSize="20px" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Meettxt, Mode=TwoWay}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="2" Grid.Row="3" FontSize="20px" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Fishtxt, Mode=TwoWay}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="2" Grid.Row="4" FontSize="20px" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Fruittxt, Mode=TwoWay}" VerticalAlignment="Center"/>
+        <Image Source="{Binding PathKartinkiFastFood, Mode=TwoWay}" Stretch="Fill" Grid.Row="0" Grid.Column="1" />
+        <Image Grid.Row="1" Grid.Column="1" Source="{Binding PathKartinkiOvoshi, Mode=TwoWay}" Stretch="Fill"/>
+        <Image Grid.Row="2" Grid.Column="1" Source="{Binding PathKartinkiMeet, Mode=TwoWay}" Stretch="Fill"/>
+        <Image Grid.Row="3" Grid.Column="1" Source="{Binding PathKartinkiFish, Mode=TwoWay}" Stretch="Fill"/>
+        <Image Grid.Row="4" Grid.Column="1" Source="{Binding PathKartinkiFruit, Mode=TwoWay}" Stretch="Fill"/>
+        <Button Grid.Row="6" Content="Сохранить" Command="{Binding Save}"/>
     </Grid>
 </Page>

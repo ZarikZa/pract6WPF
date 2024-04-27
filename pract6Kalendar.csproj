@@ -86,6 +86,7 @@
     <Compile Include="ViewModel\Helperi\BindingClick.cs" />
     <Compile Include="ViewModel\Helperi\BindingHelp.cs" />
     <Compile Include="ViewModel\Helperi\Converter.cs" />
+    <Compile Include="ViewModel\Menu_changeVM.cs" />
     <Compile Include="View\carts.xaml.cs">
       <DependentUpon>carts.xaml</DependentUpon>
     </Compile>
