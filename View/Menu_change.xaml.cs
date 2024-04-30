@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -25,6 +26,16 @@ namespace pract6Kalendar
         {
             InitializeComponent();
             DataContext = new Menu_changeVM();
+        }
+
+        private void SaveBtm_Click(object sender, RoutedEventArgs e)
+        {
+            DoubleAnimation anim = new DoubleAnimation();
+            anim.From = SaveBtm.ActualHeight;
+            anim.To = 50;
+            anim.Duration = TimeSpan.FromSeconds(1);
+            anim.FillBehavior = FillBehavior.Stop;
+            SaveBtm.BeginAnimation(Button.HeightProperty, anim);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
@@ -141,19 +142,64 @@ namespace pract6Kalendar.ViewModel
 		Converter Converter = new Converter();
         public Menu_changeVM()
 		{
-			PathKartinkiFastFood = new BitmapImage(new Uri("../../WIN_20230411_22_42_47_Pro.jpg", UriKind.Relative));
-			FastFoodtxt = "Фаст фуд";
-            PathKartinkiOvoshi = new BitmapImage(new Uri("../../WIN_20230921_17_14_43_Pro.jpg", UriKind.Relative));
-			Ovoshitxt = "Овощи";
-            PathKartinkiMeet = new BitmapImage(new Uri("../../WIN_20230711_20_13_04_Pro.jpg", UriKind.Relative));
-            Meettxt = "Мясо";
-            PathKartinkiFish = new BitmapImage(new Uri("../../WIN_20230711_20_12_13_Pro.jpg", UriKind.Relative));
-			Fishtxt = "Рыба";
-            PathKartinkiFruit = new BitmapImage(new Uri("../../WIN_20230315_23_07_05_Pro.jpg", UriKind.Relative));
-			Fruittxt = "Фрукты";
+			PathKartinkiFastFood = new BitmapImage(new Uri("../../msg984776183-261182.jpg", UriKind.Relative));
+			FastFoodtxt = "Влюбленный ❤";
+            PathKartinkiOvoshi = new BitmapImage(new Uri("../../msg984776183-261194.jpg", UriKind.Relative));
+			Ovoshitxt = "Охота навести суету 🤙";
+            PathKartinkiMeet = new BitmapImage(new Uri("../../msg984776183-261197.jpg", UriKind.Relative));
+            Meettxt = "Все плохо 🤧";
+            PathKartinkiFish = new BitmapImage(new Uri("../../msg984776183-261202.jpg", UriKind.Relative));
+			Fishtxt = "Деловой 💻";
+            PathKartinkiFruit = new BitmapImage(new Uri("../../msg984776183-261204.jpg", UriKind.Relative));
+			Fruittxt = "Голодный 🍔";
 			Selected = new BindingClick(Select);
             Save = new BindingClick(_ => SaveClick());
-            //viborNaDay = Converter.Jsonviser<List<ViborNaDayModel>>("Выборы");
+            viborNaDayList = Converter.Jsonviser<List<ViborNaDayModel>>("MyMood.json") ?? new List<ViborNaDayModel>();
+            MainWindow window = Application.Current.MainWindow as MainWindow;
+            DateTime date = DateTime.Parse(window.vm.DataKakayato);
+            foreach (var item in viborNaDayList)
+            {
+                if(item.data == date)
+                {
+                    viborList = item.viborModels;
+                }
+            }
+            foreach (var item in viborList)
+            {
+                if(item.name == "Влюбленный ❤")
+                {
+                    CheckFastFood = item.selected;
+                }
+                else if(item.name == "Охота навести суету \U0001f919")
+                {
+                    CheckOvoshi = item.selected;
+                }
+                else if(item.name == "Все плохо 🤧")
+                {
+                    CheckMeet = item.selected;
+                }
+                else if(item.name == "Деловой 💻")
+                {
+                    CheckFish = item.selected;
+                }
+                else if(item.name == "Голодный 🍔")
+                {
+                    CheckFruit = item.selected;
+                }
+            }
+            if(viborList.Count == 0)
+            {
+                ViborModel Fastfood = new ViborModel(FastFoodtxt, PathKartinkiFastFood.ToString(), CheckFastFood);
+                viborList.Add(Fastfood);
+                ViborModel Ovoshi = new ViborModel(Ovoshitxt, PathKartinkiOvoshi.ToString(), CheckOvoshi);
+                viborList.Add(Ovoshi);
+                ViborModel Meet = new ViborModel(Meettxt, PathKartinkiMeet.ToString(), CheckMeet);
+                viborList.Add(Meet);
+                ViborModel Fish = new ViborModel(Fishtxt, PathKartinkiFish.ToString(), CheckFish);
+                viborList.Add(Fish);
+                ViborModel Fruit = new ViborModel(Fruittxt, PathKartinkiFruit.ToString(), CheckFruit);
+                viborList.Add(Fruit);
+            }
             //выбирать из viborNaDay нужный viborList на день и присваивать viborList нужный да
         }
 
@@ -164,14 +210,19 @@ namespace pract6Kalendar.ViewModel
 				case "FastFood":
 					if(CheckFastFood == true)
 					{
-						ViborModel vibor = new ViborModel(FastFoodtxt, PathKartinkiFastFood.ToString(), CheckFastFood);
-						viborList.Add(vibor);
+                        foreach (var item in viborList)
+                        {
+                            if (item.name == "Влюбленный ❤")
+                            {
+                                item.selected = true;
+                            }
+                        }
                     }
 					else
 					{
 						foreach (var item in viborList)
 						{
-							if(item.name == "Фаст фуд")
+							if(item.name == "Влюбленный ❤")
 							{
 								item.selected = false;
 							}
@@ -181,14 +232,19 @@ namespace pract6Kalendar.ViewModel
 				case "Ovoshi":
                     if (CheckOvoshi == true)
                     {
-                        ViborModel vibor = new ViborModel(Ovoshitxt, PathKartinkiOvoshi.ToString(), CheckOvoshi);
-                        viborList.Add(vibor);
+                        foreach (var item in viborList)
+                        {
+                            if (item.name == "Охота навести суету \U0001f919")
+                            {
+                                item.selected = true;
+                            }
+                        }
                     }
                     else
                     {
                         foreach (var item in viborList)
                         {
-                            if (item.name == "Овощи")
+                            if (item.name == "Охота навести суету \U0001f919")
                             {
                                 item.selected = false;
                             }
@@ -198,14 +254,19 @@ namespace pract6Kalendar.ViewModel
 				case "Meet":
                     if (CheckMeet == true)
                     {
-                        ViborModel vibor = new ViborModel(Meettxt, PathKartinkiMeet.ToString(), CheckMeet);
-                        viborList.Add(vibor);
+                        foreach (var item in viborList)
+                        {
+                            if (item.name == "Все плохо \U0001f927")
+                            {
+                                item.selected = true;
+                            }
+                        }
                     }
                     else
                     {
                         foreach (var item in viborList)
                         {
-                            if (item.name == "Мясо")
+                            if (item.name == "Все плохо \U0001f927")
                             {
                                 item.selected = false;
                             }
@@ -215,14 +276,19 @@ namespace pract6Kalendar.ViewModel
 				case "Fish":
                     if (CheckFish == true)
                     {
-                        ViborModel vibor = new ViborModel(Fishtxt, PathKartinkiFish.ToString(), CheckFish);
-                        viborList.Add(vibor);
+                        foreach (var item in viborList)
+                        {
+                            if (item.name == "Деловой 💻")
+                            {
+                                item.selected = true;
+                            }
+                        }
                     }
                     else
                     {
                         foreach (var item in viborList)
                         {
-                            if (item.name == "Рыба")
+                            if (item.name == "Деловой 💻")
                             {
                                 item.selected = false;
                             }
@@ -232,14 +298,19 @@ namespace pract6Kalendar.ViewModel
 				case "Fruit":
                     if (CheckFruit == true)
                     {
-                        ViborModel vibor = new ViborModel(Fruittxt, PathKartinkiFruit.ToString(), CheckFruit);
-                        viborList.Add(vibor);
+                        foreach (var item in viborList)
+                        {
+                            if (item.name == "Голодный 🍔")
+                            {
+                                item.selected = true;
+                            }
+                        }
                     }
                     else
                     {
                         foreach (var item in viborList)
                         {
-                            if (item.name == "Мясо")
+                            if (item.name == "Голодный 🍔")
                             {
                                 item.selected = false;
                             }
@@ -248,9 +319,21 @@ namespace pract6Kalendar.ViewModel
                     break;
 			}
 		}
+
         public void SaveClick()
         {
-            ViborNaDayModel viborNaDay = new ViborNaDayModel(DateTime.Now,viborList);
+
+            MainWindow window = Application.Current.MainWindow as MainWindow;
+            DateTime date = DateTime.Parse(window.vm.DataKakayato);
+            for (int i = 0; i < viborNaDayList.Count; i++)
+            {
+                if (viborNaDayList[i].data == date)
+                {
+                    viborNaDayList.Remove(viborNaDayList[i]);
+                    Converter.Jsonser(viborNaDayList, "MyMood.json");
+                }
+            }
+            ViborNaDayModel viborNaDay = new ViborNaDayModel(date,viborList);
             viborNaDayList.Add(viborNaDay);
             Converter.Jsonser(viborNaDayList, "MyMood.json");
         }

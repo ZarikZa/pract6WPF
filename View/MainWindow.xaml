@@ -6,22 +6,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pract6Kalendar"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" MinHeight="400" Width="500" MinWidth="300">
+        Title="MainWindow" Height="500" MinHeight="400" Width="600" MinWidth="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="47*"/>
-            <RowDefinition Height="245*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="300*"/>
         </Grid.RowDefinitions>
-        <Frame x:Name="frame" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
+        <Frame x:Name="frame" Content="{Binding ContentXZ, Mode=TwoWay}" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="134*"/>
                 <ColumnDefinition Width="199*"/>
                 <ColumnDefinition Width="134*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Name="back_btn" Content="назад" Click="back_btn_Click"/>
-            <Button Grid.Column="2" Name="next_btm" Content="вперед" Click="next_btm_Click" />
-            <TextBlock x:Name="date_txtblc" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Center"/>
+            <Button Grid.Column="0" Name="back_btn" Content="назад" Command="{Binding Back}" Click="back_btn_Click"/>
+            <Button Grid.Column="2" Name="next_btm" Content="вперед" Command="{Binding Next}" Click="next_btm_Click" />
+            <TextBlock x:Name="date_txtblc" Text="{Binding DataKakayato, Mode=TwoWay}" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Center"/>
         </Grid>
     </Grid>
 </Window>

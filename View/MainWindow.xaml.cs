@@ -1,4 +1,5 @@
-﻿using System;
+﻿using pract6Kalendar.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,43 +22,43 @@ namespace pract6Kalendar
     /// </summary>
     public partial class MainWindow : Window
     {
-        DateTime date = DateTime.Now;
+        internal MainWindowVM vm;
         public MainWindow()
         {
             InitializeComponent();
-            Refresh();
-        }
-        private void Refresh()
-        {
-            date_txtblc.Text = date.ToString("Y");
-            main_menu main_menu = new main_menu(date);
-            frame.Content = main_menu;
-        }
 
+            vm = new MainWindowVM();
+            DataContext = vm;
+        }
+   
         private void back_btn_Click(object sender, RoutedEventArgs e)
         {
             // анимации
+            DoubleAnimationUsingKeyFrames size = new DoubleAnimationUsingKeyFrames();
+            size.Duration = TimeSpan.FromSeconds(2);
+            size.KeyFrames.Add(new LinearDoubleKeyFrame(650,KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5))));
+            size.KeyFrames.Add(new LinearDoubleKeyFrame(600, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(1))));
+            this.BeginAnimation(WidthProperty, size);
             ColorAnimation color = new ColorAnimation();
             back_btn.Background = ((SolidColorBrush)back_btn.Background).Clone();
-            color.To = Colors.Aqua;
-            color.Duration = TimeSpan.FromSeconds(2);
+            color.To = Colors.Pink;
+            color.Duration = TimeSpan.FromSeconds(1.5);
             back_btn.Background.BeginAnimation(SolidColorBrush.ColorProperty, color);
-            //изменение мксяца
-            date = date.AddMonths(-1);
-            Refresh();
         }
 
         private void next_btm_Click(object sender, RoutedEventArgs e)
         {
             //анимации
+            DoubleAnimationUsingKeyFrames size = new DoubleAnimationUsingKeyFrames();
+            size.Duration = TimeSpan.FromSeconds(1);
+            size.KeyFrames.Add(new LinearDoubleKeyFrame(650, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(0.5))));
+            size.KeyFrames.Add(new LinearDoubleKeyFrame(600, KeyTime.FromTimeSpan(TimeSpan.FromSeconds(1))));
+            this.BeginAnimation(WidthProperty, size);
             ColorAnimation color = new ColorAnimation();
             next_btm.Background = ((SolidColorBrush)next_btm.Background).Clone();
-            color.To = Colors.Aqua;
-            color.Duration = TimeSpan.FromSeconds(2);
+            color.To = Colors.Pink;
+            color.Duration = TimeSpan.FromSeconds(1.5);
             next_btm.Background.BeginAnimation(SolidColorBrush.ColorProperty, color);
-            // изменения месяца
-            date = date.AddMonths(1);
-            Refresh();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace pract6Kalendar.Model
 {
     internal class ViborNaDayModel
     {
-        List<ViborModel> viborModels; 
+        public List<ViborModel> viborModels; 
         public DateTime data;
 
         public ViborNaDayModel(DateTime date, List<ViborModel> viborModel)

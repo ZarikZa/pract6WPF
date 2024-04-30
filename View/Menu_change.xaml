@@ -7,37 +7,35 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Menu_change">
-
     <Grid>
         <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="79*"/>
-            <ColumnDefinition Width="124*"/>
-            <ColumnDefinition Width="297*"/>
+            <ColumnDefinition Width="151*"/>
+            <ColumnDefinition Width="140*"/>
+            <ColumnDefinition Width="509*"/>
         </Grid.ColumnDefinitions>
-        <CheckBox CommandParameter="FastFood" Grid.Column="0" HorizontalAlignment="Left" IsChecked="{Binding CheckFastFood, Mode=TwoWay}" VerticalAlignment="Center" Height="18" Width="18" Command="{Binding Selected}"/>
-        <CheckBox CommandParameter="Ovoshi" Grid.Column="0" Grid.Row="1" IsChecked="{Binding CheckOvoshi, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18" Command="{Binding Selected}"/>
-        <CheckBox CommandParameter="Meet" Grid.Column="0" Grid.Row="2" IsChecked="{Binding CheckMeet, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18" Command="{Binding Selected}"/>
-        <CheckBox CommandParameter="Fish" Grid.Column="0" Grid.Row="3" IsChecked="{Binding CheckFish, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18" Command="{Binding Selected}"/>
-        <CheckBox CommandParameter="Fruit" Grid.Column="0" Grid.Row="4" IsChecked="{Binding CheckFruit, Mode=TwoWay}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="18" Width="18" Command="{Binding Selected}"/>
-        <TextBlock Grid.Column="2" Grid.Row="0" FontSize="20px" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding FastFoodtxt, Mode=TwoWay}" VerticalAlignment="Center"/>
-        <TextBlock Grid.Column="2" Grid.Row="1" FontSize="20px" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Ovoshitxt, Mode=TwoWay}" VerticalAlignment="Center"/>
-        <TextBlock Grid.Column="2" Grid.Row="2" FontSize="20px" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Meettxt, Mode=TwoWay}" VerticalAlignment="Center"/>
-        <TextBlock Grid.Column="2" Grid.Row="3" FontSize="20px" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Fishtxt, Mode=TwoWay}" VerticalAlignment="Center"/>
-        <TextBlock Grid.Column="2" Grid.Row="4" FontSize="20px" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Fruittxt, Mode=TwoWay}" VerticalAlignment="Center"/>
-        <Image Source="{Binding PathKartinkiFastFood, Mode=TwoWay}" Stretch="Fill" Grid.Row="0" Grid.Column="1" />
-        <Image Grid.Row="1" Grid.Column="1" Source="{Binding PathKartinkiOvoshi, Mode=TwoWay}" Stretch="Fill"/>
-        <Image Grid.Row="2" Grid.Column="1" Source="{Binding PathKartinkiMeet, Mode=TwoWay}" Stretch="Fill"/>
-        <Image Grid.Row="3" Grid.Column="1" Source="{Binding PathKartinkiFish, Mode=TwoWay}" Stretch="Fill"/>
-        <Image Grid.Row="4" Grid.Column="1" Source="{Binding PathKartinkiFruit, Mode=TwoWay}" Stretch="Fill"/>
-        <Button Grid.Row="6" Content="Сохранить" Command="{Binding Save}"/>
+        <CheckBox Name="_1" Command="{Binding Selected}" CommandParameter="FastFood" IsChecked="{Binding CheckFastFood, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <CheckBox Name="_2" Command="{Binding Selected}" CommandParameter="Ovoshi" IsChecked="{Binding CheckOvoshi, Mode=TwoWay}" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <CheckBox Name="_3" Command="{Binding Selected}" CommandParameter="Meet"  IsChecked="{Binding CheckMeet, Mode=TwoWay}" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <CheckBox Name="_4" Command="{Binding Selected}" CommandParameter="Fish"  IsChecked="{Binding CheckFish, Mode=TwoWay}" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <CheckBox Name="_5" Command="{Binding Selected}" CommandParameter="Fruit" IsChecked="{Binding CheckFruit, Mode=TwoWay}" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" />
+        <TextBlock Grid.Column="2" FontSize="25px" Margin="10,0,0,0"  HorizontalAlignment="Left"  TextWrapping="Wrap" Text="{Binding FastFoodtxt, Mode=TwoWay}" VerticalAlignment="Center" />
+        <TextBlock Grid.Column="2" Grid.Row="1" FontSize="25px" HorizontalAlignment="Left"  TextWrapping="Wrap" Margin="10,0,0,0" Text="{Binding Ovoshitxt, Mode=TwoWay}" VerticalAlignment="Center" />
+        <TextBlock Grid.Column="2" Grid.Row="2" FontSize="25px" HorizontalAlignment="Left"  TextWrapping="Wrap" Margin="10,0,0,0" Text="{Binding Meettxt, Mode=TwoWay}" VerticalAlignment="Center" />
+        <TextBlock Grid.Column="2" Grid.Row="3" FontSize="25px" HorizontalAlignment="Left"  TextWrapping="Wrap" Margin="10,0,0,0" Text="{Binding Fishtxt, Mode=TwoWay}" VerticalAlignment="Center" />
+        <TextBlock Grid.Column="2" Grid.Row="4" FontSize="25px" HorizontalAlignment="Left"  TextWrapping="Wrap" Margin="10,0,0,0" Text="{Binding Fruittxt, Mode=TwoWay}" VerticalAlignment="Center" />
+        <Image Margin="5,0,0,5" Grid.Row="0" HorizontalAlignment="Left" Grid.Column="1" Source="{Binding PathKartinkiFastFood, Mode=TwoWay}"/>
+        <Image Margin ="5,0,0,5"  Grid.Row="1" HorizontalAlignment="Left" Grid.Column="1"  Source="{Binding PathKartinkiOvoshi, Mode=TwoWay}"/>
+        <Image Margin ="5,0,0,5" Grid.Row="2" HorizontalAlignment="Left" Grid.Column="1" Source="{Binding PathKartinkiMeet, Mode=TwoWay}" />
+        <Image Margin ="5,0,0,5" Grid.Row="3" HorizontalAlignment="Left"  Grid.Column="1" Source="{Binding PathKartinkiFish, Mode=TwoWay}"/>
+        <Image Margin ="5,0,0,5" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Source="{Binding PathKartinkiFruit, Mode=TwoWay}" />
+        <Button x:Name="SaveBtm" Grid.Row="5" Content="Сохранить" Command="{Binding Save}" Click="SaveBtm_Click"/>
     </Grid>
 </Page>
